@@ -1,0 +1,24 @@
+{
+  "name": "flipboxdigital/rest",
+  "description": "Rest application for Yii2 and Craft CMS",
+  "version": "1.0.0-beta",
+  "require": {
+    "craftcms/cms": "~3.0.0-beta.17"
+  },
+  "repositories": [{
+    "type": "composer",
+    "url": "https://asset-packagist.org"
+  }],
+  "autoload": {
+    "psr-4": {
+      "flipbox\\rest\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Flipbox Digital",
+      "homepage": "https://flipboxdigital.com/"
+    }
+  ]
+}
