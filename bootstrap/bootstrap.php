@@ -14,10 +14,10 @@ use craft\services\Config;
 // Setup
 // -----------------------------------------------------------------------------
 
-//// Validate the app type
-//if (!isset($appType) || ($appType !== 'web' && $appType !== 'console')) {
-//    throw new Exception('$appType must be set to "web" or "console".');
-//}
+// Validate the app type
+if (!isset($appType) || ($appType !== 'web' && $appType !== 'console')) {
+    throw new Exception('$appType must be set to "web" or "console".');
+}
 
 $findConfig = function($constName, $argName) {
     if (defined($constName)) {
@@ -96,7 +96,6 @@ $basePath = $findConfigPath('CRAFT_BASE_PATH', 'basePath') ?: dirname($vendorPat
 // By default the remaining directories will be in the base directory
 $configPath = $findConfigPath('CRAFT_CONFIG_PATH', 'configPath') ?: $basePath.'/config';
 $contentMigrationsPath = $findConfigPath('CRAFT_CONTENT_MIGRATIONS_PATH', 'contentMigrationsPath') ?: $basePath.'/migrations';
-$pluginsPath = $findConfigPath('CRAFT_PLUGINS_PATH', 'pluginsPath') ?: $basePath.'/plugins';
 $storagePath = $findConfigPath('CRAFT_STORAGE_PATH', 'storagePath') ?: $basePath.'/storage';
 $templatesPath = $findConfigPath('CRAFT_TEMPLATES_PATH', 'templatesPath') ?: $basePath.'/templates';
 $translationsPath = $findConfigPath('CRAFT_TRANSLATIONS_PATH', 'translationsPath') ?: $basePath.'/translations';
@@ -177,26 +176,25 @@ if ($devMode) {
 defined('CURLOPT_TIMEOUT_MS') || define('CURLOPT_TIMEOUT_MS', 155);
 defined('CURLOPT_CONNECTTIMEOUT_MS') || define('CURLOPT_CONNECTTIMEOUT_MS', 156);
 
-
-$restPath = $vendorPath.'/flipboxdigital/rest/src';
-
 // Load the files
 $cmsPath = $vendorPath.'/craftcms/cms';
 $libPath = $cmsPath.'/lib';
 $srcPath = $cmsPath.'/src';
 require $vendorPath.'/yiisoft/yii2/Yii.php';
-require $vendorPath.'/craftcms/cms/src/Craft.php';
+require $srcPath.'/Craft.php';
+
+// Move Yii's autoloader to the end (Composer's is faster when optimized)
+spl_autoload_unregister(['Yii', 'autoload']);
+spl_autoload_register(['Yii', 'autoload'], true, false);
 
 // Set aliases
 Craft::setAlias('@lib', $libPath);
 Craft::setAlias('@craft', $srcPath);
 Craft::setAlias('@config', $configPath);
 Craft::setAlias('@contentMigrations', $contentMigrationsPath);
-Craft::setAlias('@plugins', $pluginsPath);
 Craft::setAlias('@storage', $storagePath);
 Craft::setAlias('@templates', $templatesPath);
 Craft::setAlias('@translations', $translationsPath);
-Craft::setAlias('@flipbox/rest', $restPath);
 
 // Load the config
 $components = [
@@ -210,20 +208,17 @@ $config = ArrayHelper::merge(
         'components' => $components,
     ],
     require "{$srcPath}/config/app/main.php",
-    require "{$restPath}/config/app/{$appType}.php",
-    $configService->getConfigFromFile($appType)
+    require "{$srcPath}/config/app/{$appType}.php",
+    $configService->getConfigFromFile('app'),
+    $configService->getConfigFromFile(empty($appConfig) ? $appType : $appConfig)
 );
-//
-//var_dump($config);
-//exit;
 
 if (defined('CRAFT_SITE') || defined('CRAFT_LOCALE')) {
     $config['components']['sites']['currentSite'] = defined('CRAFT_SITE') ? CRAFT_SITE : CRAFT_LOCALE;
 }
 
 // Initialize the application
-$class = "flipbox\\{$appType}\\Application";
-
+$class = "craft\\{$appType}\\Application";
 /** @var $app craft\web\Application|craft\console\Application */
 $app = new $class($config);
 
@@ -242,11 +237,20 @@ if ($appType === 'web') {
     if ($session->getHasSessionId() || $session->getIsActive()) {
         $isCpRequest = $app->getRequest()->getIsCpRequest();
 
-        if (($isCpRequest && $session->get('enableDebugToolbarForCp')) || (!$isCpRequest && $session->get('enableDebugToolbarForSite'))) {
-            /** @var yii\debug\Module $module */
-            $module = $app->getModule('debug');
-            $module->bootstrap($app);
-            \yii\debug\Module::setYiiLogo("data:image/svg+xml;utf8,<svg width='30px' height='30px' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g fill='#DA5B47'><path d='M21.5549104,8.56198524 C21.6709104,8.6498314 21.7812181,8.74275447 21.8889104,8.83706217 L23.6315258,7.47013909 L23.6858335,7.39952371 C23.4189104,7.12998524 23.132295,6.87506217 22.8224489,6.64075447 C18.8236796,3.62275447 12.7813719,4.88598524 9.32737193,9.46275447 C5.87321809,14.0393699 6.31475655,20.195216 10.3135258,23.2138314 C13.578295,25.6779852 18.2047565,25.287216 21.6732181,22.5699852 L21.6693719,22.5630622 L20.0107565,21.2621391 C17.4407565,22.9144468 14.252295,23.0333699 11.9458335,21.2927545 C8.87414116,18.9746006 8.53506424,14.245216 11.188295,10.7293699 C13.8419873,7.21398524 18.4832181,6.24367755 21.5549104,8.56198524'></path></g></svg>");
+        $enableDebugToolbarForCp = $session->get('enableDebugToolbarForCp');
+        $enableDebugToolbarForSite = $session->get('enableDebugToolbarForSite');
+
+        if ($enableDebugToolbarForCp || $enableDebugToolbarForSite) {
+            // The actual toolbar will always get loaded from "site" action requests, even if being displayed in the CP
+            if (!$isCpRequest) {
+                \yii\debug\Module::setYiiLogo("data:image/svg+xml;utf8,<svg width='30px' height='30px' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g fill='#DA5B47'><path d='M21.5549104,8.56198524 C21.6709104,8.6498314 21.7812181,8.74275447 21.8889104,8.83706217 L23.6315258,7.47013909 L23.6858335,7.39952371 C23.4189104,7.12998524 23.132295,6.87506217 22.8224489,6.64075447 C18.8236796,3.62275447 12.7813719,4.88598524 9.32737193,9.46275447 C5.87321809,14.0393699 6.31475655,20.195216 10.3135258,23.2138314 C13.578295,25.6779852 18.2047565,25.287216 21.6732181,22.5699852 L21.6693719,22.5630622 L20.0107565,21.2621391 C17.4407565,22.9144468 14.252295,23.0333699 11.9458335,21.2927545 C8.87414116,18.9746006 8.53506424,14.245216 11.188295,10.7293699 C13.8419873,7.21398524 18.4832181,6.24367755 21.5549104,8.56198524'></path></g></svg>");
+            }
+
+            if (($isCpRequest && $enableDebugToolbarForCp) || (!$isCpRequest && $enableDebugToolbarForSite)) {
+                /** @var yii\debug\Module $module */
+                $module = $app->getModule('debug');
+                $module->bootstrap($app);
+            }
         }
     }
 }
