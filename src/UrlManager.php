@@ -1,9 +1,4 @@
 <?php
-/**
- * @link      http://buildwithcraft.com/
- * @copyright Copyright (c) 2015 Pixel & Tonic, Inc.
- * @license   http://buildwithcraft.com/license
- */
 
 namespace flipbox\rest;
 
@@ -37,6 +32,21 @@ class UrlManager extends \yii\web\UrlManager
 
         return array_filter($event->rules);
 
+    }
+
+    /**
+     * Parses the user request.
+     * @param Request $request the request component
+     * @return array|bool the route and the associated parameters. The latter is always empty
+     * if [[enablePrettyUrl]] is `false`. `false` is returned if the current request cannot be successfully parsed.
+     */
+    public function parseRequest($request)
+    {
+        if (!$result = parent::parseRequest($request)) {
+            var_dump($request);
+        }
+
+        return $result;
     }
 
 }

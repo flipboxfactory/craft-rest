@@ -32,6 +32,9 @@ date_default_timezone_set('UTC');
 // Load Craft
 // -----------------------------------------------------------------------------
 
-$appType = 'rest';
+$appType = 'web';
+
+$appConfig = 'rest';
+define('CRAFT_VENDOR_PATH', dirname(__DIR__, 2).'/vendor');
 
 return require __DIR__.'/bootstrap.php';
