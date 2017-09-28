@@ -14,7 +14,6 @@ use craft\helpers\StringHelper;
 use yii\base\InvalidConfigException;
 use yii\web\BadRequestHttpException;
 
-
 class Request extends \craft\web\Request
 {
 
