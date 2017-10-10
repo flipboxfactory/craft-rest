@@ -47,6 +47,7 @@ class Controller extends \yii\web\Controller
             ],
             'authenticator' => [
                 'class' => CompositeAuth::class,
+                'optional' => ['options', 'head']
             ],
             'rateLimiter' => [
                 'class' => RateLimiter::class,
