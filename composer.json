@@ -1,5 +1,5 @@
 {
-  "name": "flipboxdigital/rest",
+  "name": "flipbox/rest",
   "description": "Rest application for Yii2 and Craft CMS",
   "version": "1.0.0-beta",
   "require": {
