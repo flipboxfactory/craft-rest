@@ -1,10 +1,10 @@
 # RESTful Application Components for Craft CMS
 [![Join the chat at https://gitter.im/flipboxfactory/craft-rest](https://badges.gitter.im/flipboxfactory/craft-rest.svg)](https://gitter.im/flipboxfactory/craft-rest?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Latest Version](https://img.shields.io/github/release/flipboxfactory/craft-.svg?style=flat-square)](https://github.com/flipboxfactory/craft-/releases)
+[![Latest Version](https://img.shields.io/github/release/flipboxfactory/craft-rest.svg?style=flat-square)](https://github.com/flipboxfactory/craft-rest/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/flipboxfactory/craft-/master.svg?style=flat-square)](https://travis-ci.org/flipboxfactory/craft-)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/flipboxfactory/craft-.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipboxfactory/craft-/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/flipboxfactory/craft-.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipboxfactory/craft-)
+[![Build Status](https://img.shields.io/travis/flipboxfactory/craft-rest/master.svg?style=flat-square)](https://travis-ci.org/flipboxfactory/craft-rest)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/flipboxfactory/craft-rest.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipboxfactory/craft-rest/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/flipboxfactory/craft-rest.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipboxfactory/craft-rest)
 [![Total Downloads](https://img.shields.io/packagist/dt/flipboxfactory/craft-rest.svg?style=flat-square)](https://packagist.org/packages/flipboxfactory/craft-rest)
 
 ## Installation
@@ -23,7 +23,7 @@ $ ./vendor/bin/phpunit
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/flipboxfactory/craft-/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/flipboxfactory/craft-rest/blob/master/CONTRIBUTING.md) for details.
 
 
 ## Credits
@@ -32,4 +32,4 @@ Please see [CONTRIBUTING](https://github.com/flipboxfactory/craft-/blob/master/C
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/flipboxfactory/craft-/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/flipboxfactory/craft-rest/blob/master/LICENSE) for more information.
