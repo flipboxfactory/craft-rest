@@ -33,6 +33,6 @@ date_default_timezone_set('UTC');
 // -----------------------------------------------------------------------------
 
 $appType = 'web';
-$appType = 'rest';
+$appConfig = 'rest';
 
 return require __DIR__.'/bootstrap.php';
