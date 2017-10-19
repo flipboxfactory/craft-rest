@@ -1,5 +1,5 @@
 {
-  "name": "flipboxdigital/rest",
+  "name": "flipboxfactory/craft-rest",
   "description": "Rest application components for Yii2 and Craft CMS",
   "version": "1.0.0-beta",
   "keywords": [
@@ -28,7 +28,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "flipbox\\organization\\tests\\": "tests/src/"
+      "flipbox\\rest\\tests\\": "tests/src/"
     }
   },
   "license": "MIT",
