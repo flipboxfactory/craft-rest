@@ -1,8 +1,9 @@
 <?php
+
 /**
- * @link      http://buildwithcraft.com/
- * @copyright Copyright (c) 2015 Pixel & Tonic, Inc.
- * @license   http://buildwithcraft.com/license
+ * @copyright  Copyright (c) Flipbox Digital Limited
+ * @license    https://flipboxfactory.com/software/transformer/license
+ * @link       https://www.flipboxfactory.com/software/transformer/
  */
 
 namespace flipbox\rest;
@@ -14,6 +15,14 @@ use craft\helpers\StringHelper;
 use yii\base\InvalidConfigException;
 use yii\web\BadRequestHttpException;
 
+/** @noinspection ClassOverridesFieldOfSuperClassInspection */
+
+/**
+ * @inheritdoc
+ *
+ * @author Flipbox Factory <hello@flipboxfactory.com>
+ * @since 1.0.0
+ */
 class Request extends \craft\web\Request
 {
 

@@ -1,17 +1,34 @@
 {
-  "name": "flipboxfactory/rest",
-  "description": "Rest application for Yii2 and Craft CMS",
+  "name": "flipboxdigital/rest",
+  "description": "Rest application components for Yii2 and Craft CMS",
   "version": "1.0.0-beta",
+  "keywords": [
+    "flipbox",
+    "craft",
+    "rest",
+    "RESTful",
+    "api",
+    "yii2"
+  ],
+  "config": {
+    "optimize-autoloader": true
+  },
   "require": {
     "craftcms/cms": "~3.0.0-beta.17"
   },
-  "repositories": [{
-    "type": "composer",
-    "url": "https://asset-packagist.org"
-  }],
+  "require-dev": {
+    "phpunit/phpunit": "^5.0",
+    "squizlabs/php_codesniffer": "^2.0",
+    "codeception/codeception": "^2.2"
+  },
   "autoload": {
     "psr-4": {
       "flipbox\\rest\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "flipbox\\organization\\tests\\": "tests/src/"
     }
   },
   "license": "MIT",
@@ -20,5 +37,12 @@
       "name": "Flipbox Digital",
       "homepage": "https://flipboxdigital.com/"
     }
-  ]
+  ],
+  "support": {
+    "email": "support@flipboxdigital.com",
+    "issues": "https://github.com/flipbox/rest/issues?state=open",
+    "source": "https://github.com/flipbox/rest",
+    "docs": "https://github.com/flipbox/rest",
+    "rss": "https://github.com/flipbox/rest/commits/master.atom"
+  }
 }

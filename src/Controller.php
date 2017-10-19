@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @copyright  Copyright (c) Flipbox Digital Limited
+ * @license    https://flipboxfactory.com/software/transformer/license
+ * @link       https://www.flipboxfactory.com/software/transformer/
+ */
+
 namespace flipbox\rest;
 
 use yii\filters\auth\CompositeAuth;
@@ -46,8 +52,7 @@ class Controller extends \yii\web\Controller
                 'actions' => $this->verbs(),
             ],
             'authenticator' => [
-                'class' => CompositeAuth::class,
-                'optional' => ['options', 'head']
+                'class' => CompositeAuth::class
             ],
             'rateLimiter' => [
                 'class' => RateLimiter::class,

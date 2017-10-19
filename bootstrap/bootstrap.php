@@ -1,10 +1,8 @@
 <?php
 /**
- * Craft bootstrap file.
+ * Craft bootstrap file.  This is a mirror of the native bootstrap except for the addition of line 211
  *
- * @link      https://craftcms.com/
- * @copyright Copyright (c) Pixel & Tonic, Inc.
- * @license   https://craftcms.com/license
+ * Ref: https://github.com/craftcms/cms/pull/1937
  */
 
 use craft\helpers\ArrayHelper;
