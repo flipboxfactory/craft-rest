@@ -19,12 +19,16 @@ return [
                 'returnUrlParam' => $stateKeyPrefix.'__returnUrl',
             ]);
         },
-        'urlManager' => [
-            'class' => flipbox\rest\UrlManager::class,
-            'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
-            'showScriptName' => false
-        ],
+        'urlManager' => function() {
+            $generalConfig = Craft::$app->getConfig()->getGeneral();
+            return Craft::createObject([
+                'class' => flipbox\rest\UrlManager::class,
+                'routeParam' => $generalConfig->pathParam,
+                'enablePrettyUrl' => true,
+                'enableStrictParsing' => true,
+                'showScriptName' => false
+            ]);
+        },
         'request' => function() {
             $generalConfig = Craft::$app->getConfig()->getGeneral();
             return Craft::createObject([
