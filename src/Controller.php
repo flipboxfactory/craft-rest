@@ -6,7 +6,7 @@
  * @link       https://www.flipboxfactory.com/software/transformer/
  */
 
-namespace flipbox\rest;
+namespace flipbox\craft\rest;
 
 use yii\filters\auth\CompositeAuth;
 use yii\filters\ContentNegotiator;

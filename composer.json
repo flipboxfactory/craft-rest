@@ -1,7 +1,7 @@
 {
   "name": "flipboxfactory/craft-rest",
   "description": "Rest application components for Yii2 and Craft CMS",
-  "version": "1.0.0-beta.1",
+  "version": "2.0.0-rc",
   "keywords": [
     "flipbox",
     "craft",
@@ -14,7 +14,7 @@
     "optimize-autoloader": true
   },
   "require": {
-    "craftcms/cms": "~3.0.0-beta.17"
+    "craftcms/cms": "~3.0.0-RC1"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.0",
@@ -23,12 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "flipbox\\rest\\": "src/"
+      "flipbox\\craft\\rest\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "flipbox\\rest\\tests\\": "tests/src/"
+      "flipbox\\craft\\rest\\tests\\": "tests/src/"
     }
   },
   "license": "MIT",

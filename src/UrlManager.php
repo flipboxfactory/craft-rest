@@ -6,7 +6,7 @@
  * @link       https://www.flipboxfactory.com/software/transformer/
  */
 
-namespace flipbox\rest;
+namespace flipbox\craft\rest;
 
 use Craft;
 use craft\events\RegisterUrlRulesEvent;
