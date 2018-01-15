@@ -1,8 +1,8 @@
 Changelog
 =========
-## Unreleased
+## 2.0.0-rc.1 - 2018-01-15
 ### Changed
-- Namespacing to include 'craft' to avoid future conflicts
+- Class namespaces include 'craft' to avoid future conflicts
 
 ## 1.0.0-beta.1 - 2017-10-20
 ### Added
