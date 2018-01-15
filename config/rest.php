@@ -22,7 +22,7 @@ return [
         'urlManager' => function() {
             $generalConfig = Craft::$app->getConfig()->getGeneral();
             return Craft::createObject([
-                'class' => flipbox\rest\UrlManager::class,
+                'class' => flipbox\craft\rest\UrlManager::class,
                 'routeParam' => $generalConfig->pathParam,
                 'enablePrettyUrl' => true,
                 'enableStrictParsing' => true,
@@ -32,7 +32,7 @@ return [
         'request' => function() {
             $generalConfig = Craft::$app->getConfig()->getGeneral();
             return Craft::createObject([
-                'class' => flipbox\rest\Request::class,
+                'class' => flipbox\craft\rest\Request::class,
                 'enableCookieValidation' => true,
                 'cookieValidationKey' => $generalConfig->securityKey,
                 'enableCsrfValidation' => false,
