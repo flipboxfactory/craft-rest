@@ -33,7 +33,7 @@ class JsonParser extends \yii\web\JsonParser
     {
         foreach ($arr as $key => $value) {
             if ($value === null) {
-                $arr[$key] = '';
+                unset($arr[$key]);
             }
             if (is_array($value)) {
                 $arr[$key] = $this->filterNullValuesFromArray($value);
