@@ -7,7 +7,6 @@
 
 namespace flipbox\craft\rest;
 
-
 /**
  * Class JsonParser
  * @package flipbox\craft\rest
@@ -33,15 +32,14 @@ class JsonParser extends \yii\web\JsonParser
     public function filterNullValuesFromArray(array $arr): array
     {
         foreach ($arr as $key => $value) {
-            if($value === null) {
+            if ($value === null) {
                 $arr[$key] = '';
             }
-            if(is_array($value)) {
+            if (is_array($value)) {
                 $arr[$key] = $this->filterNullValuesFromArray($value);
             }
         }
 
         return $arr;
-
     }
 }
