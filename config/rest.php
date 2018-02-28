@@ -37,7 +37,7 @@ return [
                 'cookieValidationKey' => $generalConfig->securityKey,
                 'enableCsrfValidation' => false,
                 'parsers' => [
-                    'application/json' => yii\web\JsonParser::class
+                    'application/json' => flipbox\craft\rest\JsonParser::class
                 ]
             ]);
         },
