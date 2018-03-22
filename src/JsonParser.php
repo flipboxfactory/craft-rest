@@ -9,11 +9,12 @@
 namespace flipbox\craft\rest;
 
 /**
- * Class JsonParser
- * @package flipbox\craft\rest
+ * @author Flipbox Factory <hello@flipboxfactory.com>
+ * @since 1.0.0
  */
 class JsonParser extends \yii\web\JsonParser
 {
+
     /**
      * @inheritdoc
      */
@@ -33,7 +34,7 @@ class JsonParser extends \yii\web\JsonParser
     {
         foreach ($arr as $key => $value) {
             if ($value === null) {
-                $arr[$key] = '';
+                unset($arr[$key]);
             }
             if (is_array($value)) {
                 $arr[$key] = $this->filterNullValuesFromArray($value);
