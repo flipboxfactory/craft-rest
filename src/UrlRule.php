@@ -14,21 +14,24 @@ namespace flipbox\craft\rest;
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */
-class Request extends \craft\web\Request
+class UrlRule extends \yii\rest\UrlRule
 {
     /**
-     * @inheritdoc
+     * The prefix to the action
+     *
+     * @var string
      */
-    public function getIsRestRequest(): bool
-    {
-        return true;
-    }
+    public $prepend;
 
     /**
      * @inheritdoc
      */
-    public function getIsSiteRequest(): bool
+    protected function createRule($pattern, $prefix, $action)
     {
-        return false;
+        if (!empty($this->prepend)) {
+            $action = $this->prepend . '/' . $action;
+        }
+
+        return parent::createRule($pattern, $prefix, $action);
     }
 }

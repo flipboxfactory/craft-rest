@@ -2,8 +2,8 @@
 
 /**
  * @copyright  Copyright (c) Flipbox Digital Limited
- * @license    https://flipboxfactory.com/software/transformer/license
- * @link       https://www.flipboxfactory.com/software/transformer/
+ * @license    https://github.com/flipboxfactory/craft-rest/blob/master/LICENSE
+ * @link       https://github.com/flipboxfactory/craft-rest
  */
 
 namespace flipbox\craft\rest;
@@ -19,8 +19,16 @@ use craft\events\RegisterUrlRulesEvent;
  */
 class UrlManager extends \yii\web\UrlManager
 {
-
+    /**
+     * The event name when registering RESTful Url Rules
+     */
     const EVENT_REGISTER_REST_URL_RULES = 'registerRestUrlRules';
+
+    /**
+     * @var array the default configuration of URL rules. Individual rule configurations
+     * specified via [[rules]] will take precedence when the same property of the rule is configured.
+     */
+    public $ruleConfig = ['class' => UrlRule::class];
 
     /**
      * @inheritdoc

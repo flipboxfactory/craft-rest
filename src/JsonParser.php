@@ -1,12 +1,12 @@
 <?php
+
 /**
  * @copyright  Copyright (c) Flipbox Digital Limited
- * @license    https://flipboxfactory.com/software/transformer/license
- * @link       https://www.flipboxfactory.com/software/transformer/
+ * @license    https://github.com/flipboxfactory/craft-rest/blob/master/LICENSE
+ * @link       https://github.com/flipboxfactory/craft-rest
  */
 
 namespace flipbox\craft\rest;
-
 
 /**
  * Class JsonParser
@@ -14,7 +14,6 @@ namespace flipbox\craft\rest;
  */
 class JsonParser extends \yii\web\JsonParser
 {
-
     /**
      * @inheritdoc
      */
@@ -33,15 +32,14 @@ class JsonParser extends \yii\web\JsonParser
     public function filterNullValuesFromArray(array $arr): array
     {
         foreach ($arr as $key => $value) {
-            if($value === null) {
+            if ($value === null) {
                 $arr[$key] = '';
             }
-            if(is_array($value)) {
+            if (is_array($value)) {
                 $arr[$key] = $this->filterNullValuesFromArray($value);
             }
         }
 
         return $arr;
-
     }
 }

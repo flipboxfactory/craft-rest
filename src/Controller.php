@@ -2,8 +2,8 @@
 
 /**
  * @copyright  Copyright (c) Flipbox Digital Limited
- * @license    https://flipboxfactory.com/software/transformer/license
- * @link       https://www.flipboxfactory.com/software/transformer/
+ * @license    https://github.com/flipboxfactory/craft-rest/blob/master/LICENSE
+ * @link       https://github.com/flipboxfactory/craft-rest
  */
 
 namespace flipbox\craft\rest;
@@ -11,8 +11,8 @@ namespace flipbox\craft\rest;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\ContentNegotiator;
 use yii\filters\RateLimiter;
-use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * Controller is the base class for RESTful API controller classes.
