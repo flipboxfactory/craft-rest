@@ -1,7 +1,7 @@
 {
   "name": "flipboxfactory/craft-rest",
   "description": "Rest application components for Yii2 and Craft CMS",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "keywords": [
     "flipbox",
     "craft",

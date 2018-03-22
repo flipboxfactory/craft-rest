@@ -14,7 +14,6 @@ namespace flipbox\craft\rest;
  */
 class JsonParser extends \yii\web\JsonParser
 {
-
     /**
      * @inheritdoc
      */

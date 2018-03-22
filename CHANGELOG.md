@@ -1,8 +1,16 @@
 Changelog
 =========
-## Unreleased
+## 2.0.0-rc.4 - 2018-01-15
 ### Added
 - `UrlRule` to assist with prefixing rules (such as a version)
+
+## 2.0.0-rc.3 - 2018-03-18
+### Changed
+- `JsonParser` will remove keys that passed a null value
+
+## 2.0.0-rc.2 - 2018-03-18
+### Changed
+- `JsonParser` replaces null values w/ empty string
 
 ## 2.0.0-rc.1 - 2018-01-15
 ### Changed
