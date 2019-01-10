@@ -1,5 +1,10 @@
 Changelog
 =========
+
+## 2.0.0 - 2019-01-10
+### Added
+- Stable release
+
 ## 2.0.0-rc.4 - 2018-01-15
 ### Added
 - `UrlRule` to assist with prefixing rules (such as a version)
