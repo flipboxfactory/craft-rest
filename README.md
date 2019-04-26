@@ -9,7 +9,7 @@
 
 ## Description
 
-This package provides some RESTful specific components that are useful when building a RESTful api.  These components are used in a [RESTful Plugin for Craft](https://github.com/flipboxfactory/craft-restfult); however they may also be used on their own if you wish to start from scratch.
+This package provides some RESTful specific components that are useful when building a RESTful api.  These components are used in a [RESTful Plugin for Craft](https://github.com/flipboxfactory/craft-restful); however they may also be used on their own if you wish to start from scratch.
 
 ## Installation
 
