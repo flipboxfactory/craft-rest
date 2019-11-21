@@ -56,8 +56,9 @@ return [
             $target['logFile'] = '@storage/logs/rest.log';
 
             // Only log errors and warnings, unless Craft is running in Dev Mode or it's being installed/updated
-            if (!YII_DEBUG) {
-                $target['levels'] = yii\log\Logger::LEVEL_ERROR | yii\log\Logger::LEVEL_WARNING;
+            $target['levels'] = yii\log\Logger::LEVEL_ERROR | yii\log\Logger::LEVEL_WARNING;
+            if (YII_DEBUG) {
+                $target['levels'] = $target['levels'] | yii\log\Logger::LEVEL_INFO;
             }
 
             return Craft::createObject([
