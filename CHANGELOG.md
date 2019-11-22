@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## Unreleased
+## 2.1.0 - 2019-11-22
 ### Added
 - Logging via a `storage/logs/rest.log` file.
 
