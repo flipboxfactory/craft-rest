@@ -41,6 +41,33 @@ return [
                 ]
             ]);
         },
+        'log' => function() {
+            $generalConfig = Craft::$app->getConfig()->getGeneral();
+            $target = [
+                'class' => craft\log\FileTarget::class,
+                'fileMode' => $generalConfig->defaultFileMode,
+                'dirMode' => $generalConfig->defaultDirMode,
+                'includeUserIp' => $generalConfig->storeUserIps,
+                'except' => [
+                    yii\i18n\PhpMessageSource::class . ':*',
+                ],
+            ];
+
+            $target['logFile'] = '@storage/logs/rest.log';
+
+            // Only log errors and warnings, unless Craft is running in Dev Mode or it's being installed/updated
+            $target['levels'] = yii\log\Logger::LEVEL_ERROR | yii\log\Logger::LEVEL_WARNING;
+            if (YII_DEBUG) {
+                $target['levels'] = $target['levels'] | yii\log\Logger::LEVEL_INFO;
+            }
+
+            return Craft::createObject([
+                'class' => yii\log\Dispatcher::class,
+                'targets' => [
+                    $target,
+                ]
+            ]);
+        },
         'response' => [
             'class' => yii\web\Response::class,
             'format' => yii\web\Response::FORMAT_JSON
