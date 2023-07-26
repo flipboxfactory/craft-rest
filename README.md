@@ -7,6 +7,10 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/flipboxfactory/craft-rest.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipboxfactory/craft-rest)
 [![Total Downloads](https://img.shields.io/packagist/dt/flipboxfactory/craft-rest.svg?style=flat-square)](https://packagist.org/packages/flipboxfactory/craft-rest)
 
+## Description
+
+This package provides some RESTful specific components that are useful when building a RESTful api.  These components are used in a [RESTful Plugin for Craft](https://github.com/flipboxfactory/craft-restful); however they may also be used on their own if you wish to start from scratch.
+
 ## Installation
 
 To install, use composer:
@@ -14,6 +18,11 @@ To install, use composer:
 ```
 composer require flipboxfactory/craft-rest
 ```
+
+## Usage
+
+With this plugin as the scaffolding, you'll need to register and build your own RESTful endpoints.  We've created a [test project as a reference](https://github.com/flipboxlabs/craft-restful-project).
+
 
 ## Testing
 
