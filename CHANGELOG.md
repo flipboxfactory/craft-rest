@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 3.1.0 - 2024-03-10
+### Removed
+- Logger configuration is no longer included
+
 ## 3.0.0 - 2023-07-26
 ### Added
 - Support for Craft 4
