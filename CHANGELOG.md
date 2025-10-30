@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 5.0.0 - 2025-10-30
+### Added
+- Support for Craft 5
+- 
 ## 3.1.0 - 2024-03-10
 ### Removed
 - Logger configuration is no longer included
